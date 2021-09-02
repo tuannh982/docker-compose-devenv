@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mariadb:
+    image: mysql:8
+    ports:
+      - '3306:3306'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    command:
+      - --lower_case_table_names=1
+    volumes:
+      - ${PERSISTENT_DIR}/data:/var/lib/mysql
